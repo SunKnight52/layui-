@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>菜单列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/public/css/public.css" media="all" />
+	<style>
+		body{overflow-y: scroll;}
+	</style>
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+	<blockquote class="layui-elem-quote quoteBox">
+		<form class="layui-form">
+			<div class="layui-inline">
+
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input sName" placeholder="菜单名称" />
+				</div>
+
+			</div>
+
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<select name="status" class="sStatus" lay-verify="required">
+						<option value="0" selected>全部</option>
+						<option value="1">正常</option>
+						<option value="-1">锁定</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<select name="type" class="sType" lay-filter="stype" lay-verify="required">
+						<option value="">请选择类型</option>
+						<option value="1">目录</option>
+						<option value="2">菜单</option>
+						<option value="3">按钮</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<select name="pid" class="sPid" lay-verify="required">
+						<option value="">请选择上级菜单</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline" style="margin: 0 20px;">
+				<a class="layui-btn layui-btn-normal search_btn">查询</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-default add_btn">新增菜单</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-danger del_btn">批量删除</a>
+			</div>
+		</form>
+	</blockquote>
+	<table id="userList" lay-filter="userList"></table>
+
+	<!--操作-->
+	<script type="text/html" id="newsListBar">
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">修改</a>
+		<a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="del">删除</a>
+	</script>
+</form>
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/menuList.js"></script>
+</body>
+<div id="add_template" style="padding: 20px;display: none">
+	<form class="layui-form" action="">
+		<input type="hidden" name="permissionId" value="">
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 类型</label>
+			<div class="layui-input-block">
+				<input type="radio" name="type" value="1" title="目录" lay-filter="type" checked>
+				<input type="radio" name="type" value="2" title="菜单" lay-filter="type">
+				<input type="radio" name="type" value="3" title="按钮" lay-filter="type">
+			</div>
+		</div>
+		<div class="layui-form-item hidden" id="uplevel">
+			<label class="layui-form-label"><span style="color: red">*</span> 上级节点</label>
+			<div class="layui-input-block">
+				<select name="pid" lay-verify="required">
+					<option value="0" selected>无</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 菜单名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="name" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> ICON</label>
+			<div class="layui-input-block">
+				<input type="text" name="icon" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<!--<div class="layui-form-item">-->
+			<!--<label class="layui-form-label"><span style="color: red">*</span> 权限值</label>-->
+			<!--<div class="layui-input-block">-->
+				<!--<input type="text" name="permissionValue" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="layui-form-item">-->
+			<!--<label class="layui-form-label"><span style="color: red">*</span> 路径</label>-->
+			<!--<div class="layui-input-block">-->
+				<!--<input type="text" name="uri" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 显示顺序</label>
+			<div class="layui-input-block">
+				<input type="text" name="orders" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 状态</label>
+			<div class="layui-input-block">
+				<input type="radio" name="status" value="1" title="正常" checked>
+				<input type="radio" name="status" value="-1" title="锁定">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="subForm">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</div>
+</html>

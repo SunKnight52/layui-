@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>菜单列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/public/css/public.css" media="all" />
+	<style>
+		body{overflow-y: scroll;}
+	</style>
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+	<blockquote class="layui-elem-quote quoteBox">
+		<form class="layui-form">
+
+			<div class="layui-form-item">
+                <label class="layui-form-label">开始时间</label>
+				<div class="layui-input-inline">
+					<input type="text" name="startTime" id="startTime" placeholder="开始时间" autocomplete="off" class="layui-input searchUser">
+				</div>
+
+				<label class="layui-form-label">结束时间</label>
+				<div class="layui-input-inline">
+					<input type="text" name="endTime" id="endTime" placeholder="结束时间" autocomplete="off" class="layui-input searchUserId">
+				</div>
+
+
+				<label class="layui-form-label">订单编号</label>
+				<div class="layui-input-inline">
+					<input type="text" name="orderNumber" placeholder="订单编号" autocomplete="off" class="layui-input searchUserInviter">
+				</div>
+				</div>
+				<div class="layui-form-item">
+
+				<label class="layui-form-label">会员id</label>
+				<div class="layui-input-inline">
+					<input type="text" name="userId" placeholder="会员id" autocomplete="off" class="layui-input searchUserInviter">
+				</div>
+				<label class="layui-form-label">充值类型</label>
+				<div class="layui-input-inline">
+					<select name="type">
+						<option value="0">请选择</option>
+						<option value="100">水</option>
+						<option value="200">电</option>
+						<option value="300">煤气</option>
+						<option value="400">手机</option>
+						<option value="500">汽油卡</option>
+						<option value="600">游戏</option>
+					</select>
+				</div>
+				<label class="layui-form-label">充值状态</label>
+				<div class="layui-input-inline">
+					<select name="status">
+						<option value="0">请选择</option>
+						<option value="1">充值中</option>
+						<option value="2">已充值</option>
+						<option value="3">充值失败</option>
+					</select>
+				</div>
+				
+			</div>
+			<div class="layui-inline" style="margin: 0 20px;">
+				<button class="layui-btn search_btn" lay-submit lay-filter="searchForm">查询</button>
+			</div>
+			<!--<div class="layui-inline">-->
+				<!--<a class="layui-btn layui-btn-default add_btn">新增菜单</a>-->
+			<!--</div>-->
+			<!--<div class="layui-inline">-->
+				<!--<a class="layui-btn layui-btn-danger del_btn">批量删除</a>-->
+			<!--</div>-->
+		</form>
+	</blockquote>
+	<table id="userList" lay-filter="userList"></table>
+
+</form>
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/lifeList.js"></script>
+</body>
+ <!-- <div id="add_template" style="padding: 20px;display: none"> 
+	<form class="layui-form" action="">
+		<input type="hidden" name="userId" value="">
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 用户码</label>
+			<div class="layui-input-block">
+				<input type="text" name="whoId" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 等级</label>
+			<div class="layui-input-block">
+				<input type="radio" name="level" value="4" title="市场总监" lay-filter="type" checked>
+				<input type="radio" name="level" value="5" title="高级总监" lay-filter="type">
+				<input type="radio" name="level" value="6" title="特级总监" lay-filter="type">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="subForm">立即提交</button>
+
+			</div>
+		</div>
+	</form>
+</div> -->
+</html>

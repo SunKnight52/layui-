@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>会员列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/public/css/public.css" media="all" />
+    <style>
+        body{overflow-y: scroll;}
+    </style>
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form" id="rz">
+            <input type="hidden" name="verifierId" value="" id="verifierId">
+            <input type="hidden" name="userVerifierId" value="" id="userVerifierId">
+            <input type="hidden" name="userMemberId" value="" id="userMemberId">
+            <div class="layui-form-item">
+                <label class="layui-form-label">实名认证</label>
+                <div class="layui-input-inline">
+                    <select name="userVerifierStatus" id="userVerifierStatus">
+                        <!--<option >请选择</option>-->
+                        <!--<option value="-1">未上传</option>-->
+                        <!--<option value="1">待审核</option>-->
+                        <option value="2">通过</option>
+                        <option value="3">拒绝</option>
+                    </select>
+                </div>
+
+                <label class="layui-form-label">真实姓名</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="userRealName"  placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" id="userVerifierRemark" name="userVerifierRemark"></textarea>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="memberAffirm">确认审核</button>
+                </div>
+            </div>
+        </form>
+    </blockquote>
+
+    <div>
+        <div class="layui-container">
+            <div class="layui-row layui-col-space10">
+                <div class="layui-col-md4 layui-col-sm4 layui-col-md4">
+                    <img id="img1" src="" width="100%">
+                </div>
+                <div class="layui-col-md4 layui-col-sm4 layui-col-md4">
+                    <img id="img2" src="" width="100%">
+                </div>
+                <div class="layui-col-md4 layui-col-sm4 layui-col-md4">
+                    <img id="img3" src="" width="100%">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/renzheng.js"></script>
+
+</body>
+</html>

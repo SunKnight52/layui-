@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/public/css/public.css" media="all" />
+	<style>
+		body{overflow-y: scroll;}
+	</style>
+</head>
+<body class="childrenBody">
+<blockquote class="layui-elem-quote quoteBox">
+	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">开始时间</label>
+			<div class="layui-input-inline">
+				<input type="text" name="startTime" id="startTime" placeholder="开始时间" autocomplete="off" class="layui-input">
+			</div>
+
+			<label class="layui-form-label">结束时间</label>
+			<div class="layui-input-inline">
+				<input type="text" name="endTime" id="endTime" placeholder="结束时间" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">排序字段</label>
+			<div class="layui-input-inline">
+				<select name="sort">
+					<option value="">默认</option>
+					<option value="Ybb_Bill_ID">账单ID</option>
+					<option value="User_ID">用户ID</option>
+					<option value="Ybb_ID">链盟宝ID</option>
+					<option value="Ybb_Bill_code">账单号</option>
+					<option value="Type">类型</option>
+					<option value="Money">积分</option>
+					<option value="Created">创建时间</option>
+				</select>
+			</div>
+
+			<label class="layui-form-label">排序方式</label>
+			<div class="layui-input-inline">
+				<select name="order">
+					<option value="">默认</option>
+					<option value="asc">升序</option>
+					<option value="desc">降序</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-inline" style="margin: 0 20px;">
+			<button class="layui-btn layui-btn-normal search_btn" lay-submit lay-filter="searchForm">查询</button>
+		</div>
+	</form>
+</blockquote>
+	<table id="userList" lay-filter="userList"></table>
+
+	<!--操作-->
+	<script type="text/html" id="newsListBar">
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">修改</a>
+	</script>
+
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/getRollOurBill.js"></script>
+</body>
+</html>

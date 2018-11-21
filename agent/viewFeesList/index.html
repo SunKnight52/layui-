@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜单列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/public/css/public.css" media="all" />
+    <style>
+        body{overflow-y: scroll;}
+        #add_template .layui-form-label {
+            width: 92px;
+        }
+        body  #add_template .layui-form .layui-input {
+            width: 94% ;
+        }
+	</style>
+</head>
+
+<body class="childrenBody">
+    <form class="layui-form">
+        <blockquote class="layui-elem-quote quoteBox">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="startTime" id="startTime" placeholder="开始时间" autocomplete="off" class="layui-input searchUser">
+                    </div>
+
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="endTime" id="endTime" placeholder="结束时间" autocomplete="off" class="layui-input searchUserId">
+                    </div>
+
+                    <label class="layui-form-label">流水号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="billCode" placeholder="请输入账单号" autocomplete="off" class="layui-input searchUserInviter">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手续费类型</label>
+                    <div class="layui-input-inline">
+                        <select name="status">
+                            <option value="">全部</option>
+                            <option value="1">买币</option>
+                            <option value="2">卖币</option>
+                            <option value="3">提币</option>
+                            <option value="4">提现</option>
+                        </select>
+                    </div>
+
+                    <label class="layui-form-label">币种简称</label>
+                    <div class="layui-input-inline">
+                        <select name="coinId" id="coinId">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序查询</label>
+                    <div class="layui-input-inline">
+                        <select name="orderByClause">
+                            <option value=""></option>
+                            <option value="User_ID">用户</option>
+                            <option value="Coin_ID">币种</option>
+                            <option value="Status">类型</option>
+                            <option value="Created">时间</option>
+                        </select>
+                    </div>
+
+                    <label class="layui-form-label">排序方式</label>
+                    <div class="layui-input-inline">
+                        <select name="order">
+                            <option value=""></option>
+                            <option value="asc">升序</option>
+                            <option value="desc">降序</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline" style="margin-left: 30px">
+                    <a class="layui-btn layui-btn-default add_btn" >获取手续费费例</a>
+                </div>
+                <div class="layui-inline" >
+                    <button class="layui-btn layui-btn-normal search_btn" lay-submit lay-filter="searchForm">查询</button>
+                </div>
+            </form>
+        </blockquote>
+        <table id="userList" lay-filter="userList"></table>
+
+        <!--操作-->
+        <!-- <script type="text/html" id="newsListBar">
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">修改</a>
+		<a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="del">删除</a>
+	</script> -->
+    </form>
+    <div id="add_template" style="padding: 20px;display: none">
+        <form class="layui-form" action="">
+            <input type="hidden" name="id" value="">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>公司利润费率</label>
+                <div class="layui-input-block">
+                    <input type="text" name="oneRun" required lay-verify="required" placeholder="" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>消费者优惠率</label>
+                <div class="layui-input-block">
+                    <input type="text" name="twoRun" required lay-verify="required" placeholder="" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red">*</span>创建时间</label>
+                <div class="layui-input-block">
+                    <input type="text" name="created" disabled lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn sure" >确认</button>
+                    <button class="layui-btn" lay-submit lay-filter="subForm">修改</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="/public/layui/layui.js"></script>
+    <script type="text/javascript" src="/config/api.js"></script>
+    <script type="text/javascript" src="/public/js/viewFeesList.js"></script>
+   
+</body>
+
+</html>

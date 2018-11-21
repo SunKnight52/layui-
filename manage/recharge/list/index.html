@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/public/css/public.css" media="all" />
+	<style>
+		body{overflow-y: scroll;}
+	</style>
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+	<blockquote class="layui-elem-quote quoteBox">
+		<form class="layui-form">
+			<div class="layui-form-item">
+
+				<label class="layui-form-label">会员</label>
+				<div class="layui-input-inline">
+					<select name="userId" id="userId">
+					</select>
+				</div>
+
+				<label class="layui-form-label">用户</label>
+				<div class="layui-input-inline">
+					<select name="auditorId" id="auditorId">
+					</select>
+				</div>
+
+				<label class="layui-form-label">银行卡</label>
+				<div class="layui-input-inline">
+					<select name="bankCardId" id="bankCardId">
+					</select>
+				</div>
+
+
+			</div>
+
+			<div class="layui-form-item">
+
+				<label class="layui-form-label">收款备注</label>
+				<div class="layui-input-inline">
+					<input type="text" name="remark" id="remark" placeholder="备注" autocomplete="off" class="layui-input">
+				</div>
+				<label class="layui-form-label">状态</label>
+				<div class="layui-input-inline">
+					<select name="status" id="status">
+						<option value="">默认</option>
+						<option value="-1">订单</option>
+						<option value="1">交易中</option>
+						<option value="2">交易完成</option>
+						<option value="3">交易失败</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">账单生成</label>
+				<div class="layui-input-inline">
+					<input type="text" name="rechargeStartTime" id="rechargeStartTime" placeholder="开始时间" autocomplete="off" class="layui-input" lay-key="1">
+				</div>
+
+				<label class="layui-form-label">账单结束</label>
+				<div class="layui-input-inline">
+					<input type="text" name="rechargeEndTime" id="rechargeEndTime" placeholder="结束时间" autocomplete="off" class="layui-input" lay-key="2">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">审核开始</label>
+				<div class="layui-input-inline">
+					<input type="text" name="auditStartTime" id="auditStartTime" placeholder="开始时间" autocomplete="off" class="layui-input" lay-key="3">
+				</div>
+
+				<label class="layui-form-label">审核结束</label>
+				<div class="layui-input-inline">
+					<input type="text" name="auditEndTime" id="auditEndTime" placeholder="结束时间" autocomplete="off" class="layui-input" lay-key="4">
+				</div>
+
+				<div class="layui-inline" id="btn_list" style="margin: 0 20px;">
+					<a class="layui-btn" data-type="search">查询</a>
+					<a class="layui-btn layui-btn-normal" data-type="audit">审核</a>
+				</div>
+			</div>
+
+
+
+		</form>
+	</blockquote>
+	<table id="userList" lay-filter="userList"></table>
+
+</form>
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/recharge.js"></script>
+</body>
+<div id="add_template" style="padding: 20px;display: none">
+	<form class="layui-form" action="">
+
+		<input type="hidden" name="rechargeId" required lay-verify="required" >
+		<input type="hidden" name="auditUserId" required lay-verify="required">
+		<input type="hidden" name="memberUserId" required lay-verify="required">
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 状态</label>
+			<div class="layui-input-block">
+				<select name="status">
+					<option value="2">交易完成</option>
+					<option value="3">交易失败</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 实充金额</label>
+			<div class="layui-input-block">
+				<input type="text" name="rechargeAmount" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="subForm">立即提交</button>
+			</div>
+		</div>
+	</form>
+</div>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>币种信息</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/public/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/public/css/public.css" media="all" />
+	<style>
+		body{overflow-y: scroll;}
+	</style>
+</head>
+<body class="childrenBody">
+
+<blockquote class="layui-elem-quote quoteBox">
+	<form class="layui-form">
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-default edit_btn">编辑</a>
+		</div>
+	</form>
+</blockquote>
+<table id="coinFeesList" lay-filter="coinFeesList"></table>
+
+
+<script type="text/javascript" src="/public/layui/layui.js"></script>
+<script type="text/javascript" src="/config/api.js"></script>
+<script type="text/javascript" src="/public/js/coin.js"></script>
+<div id="add1_template" style="padding: 20px;display: none">
+	<form class="layui-form" action="">
+		<div class="layui-form-item areaId" style="display: none">
+			<label class="layui-form-label"><span style="color: red">*</span> 币费率ID</label>
+			<div class="layui-input-block">
+				<input type="text" name="areaId" disabled autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 结算代币</label>
+			<div class="layui-input-block">
+				<input type="text" name="settlementCoin" disabled lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 交易代币</label>
+			<div class="layui-input-block">
+				<input type="text" name="transactionCoin" disabled lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color: red">*</span> 费率</label>
+			<div class="layui-input-block">
+				<input type="text" name="b2bFees" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="subForm1">立即提交</button>
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>
